@@ -1,67 +1,31 @@
 import { NavLink } from "react-router-dom"
+import NavItem from "../NavItem"
 
 function Navbar() {
+    const Navitem = [
+        { to: "/", Navname: "Shope", className: "font-semibold text-lg" },
+        { to: "/", Navname: "All" },
+        { to: "/clothes", Navname: "Clothes" },
+        { to: "/electronics", Navname: "Electronics" },
+        { to: "/furnitures", Navname: "Furnitures" },
+        { to: "/toys", Navname: "Toys" },
+        { to: "/", Navname: "Others" },
+    ]
     const NavActive = "underline underline-offset-4"
     const NavHover = "hover:underline underline-offset-4"
     return (
         <nav className="flex justify-between items-center z-10 py-4 px-8 font-normal text-sm">
             <ul className="flex items-center gap-3">
-                <li>
-                    <NavLink
-                        to="/"
-                        className="font-semibold text-lg"
-                    >
-                        Shop
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/"
-                        className={({ isActive }) => isActive ? NavActive : NavHover }
-                    >
-                        All
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/clothes"
-                        className={({ isActive }) => isActive ? NavActive : NavHover}
-                        >
-                        Clothes
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/electronics"
-                        className={({ isActive }) => isActive ? NavActive : NavHover}
-                    >
-                        Electronics
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/furnitures"
-                        className={({ isActive }) => isActive ? NavActive : NavHover}
-                    >
-                        Furnitures
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/toys"
-                        className={({ isActive }) => isActive ? NavActive : NavHover}
-                    >
-                        Toys
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/others"
-                        className={({ isActive }) => isActive ? NavActive : NavHover}
-                    >
-                        Others
-                    </NavLink>
-                </li>
+                {Navitem.map(({to, Navname, className,NavActive, NavHover})=>(
+                    <NavItem 
+                    key={Navname}
+                    Navname={Navname}
+                    to={to}
+                    NavActive={NavActive}
+                    NavHover={NavHover}
+                    className={className}
+                    />
+                ))}
             </ul>
             <ul className="flex items-center gap-3">
                 <li className=" text-gray-400 ">
@@ -108,4 +72,6 @@ function Navbar() {
 }
 
 export default Navbar
+
+
 //experiment
