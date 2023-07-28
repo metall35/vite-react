@@ -6,12 +6,11 @@ function NavItem({to,Navname,NavActive,NavHover,className}) {
         <li className={className}>
             <NavLink
                 to={to}
-                className={({ isActive }) => (isActive ? NavActive : NavHover)}
+                className={( {isActive} ) => (isActive ? NavActive : NavHover)}
             >
                 {Navname}
             </NavLink>
         </li>
     )
 }
-
 export default NavItem

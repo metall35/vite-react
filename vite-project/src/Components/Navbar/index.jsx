@@ -16,7 +16,7 @@ function Navbar() {
     return (
         <nav className="flex justify-between items-center z-10 py-4 px-8 font-normal text-sm">
             <ul className="flex items-center gap-3">
-                {Navitem.map(({to, Navname, className,NavActive, NavHover})=>(
+                {Navitem.map(({to, Navname, className})=>(
                     <NavItem 
                     key={Navname}
                     Navname={Navname}
