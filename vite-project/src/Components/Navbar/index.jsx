@@ -15,7 +15,7 @@ function Navbar() {
     const NavHover = "hover:underline underline-offset-4"
     return (
         <nav className="flex justify-between items-center z-10 py-4 px-8 font-normal text-sm">
-            <ul className="flex items-center gap-3">
+            <ul className="flex items-center gap-3 flex-wrapg">
                 <li>
                     <NavLink
                         to="/"
