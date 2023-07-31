@@ -1,20 +1,36 @@
-
-function Card() {
-    return(
-        <div className=" cursor-pointer w-60 h-72 rounded-xl shadow-lg hover:scale-[1.01]">
-            <figure className=" relative mb-2 w-fit h-4/5 overflow-hidden rounded-t-lg  " >
-                <span className="absolute bottom-2 left-1 rounded-full px-1 backdrop-brightness-200 bg-white/80">Electronics</span>
-                <img 
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7VP8YLl4rqGT1FByGWt00dUIzfXJ2pb_GlA&usqp=CAU" alt="HeadPhones" 
-                className="w-full h-full "
+import { useContext } from "react";
+import { PlusSmallIcon } from "@heroicons/react/24/outline";
+import { ShopContext } from "../../Context";
+function Card(data) {
+    const {
+        Count,
+        setCount,
+        openModal,
+        setOpenModal
+    } = useContext(ShopContext)
+    return (
+        <div 
+        className=" cursor-pointer w-60 h-72 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.01]"
+        onClick={() => {
+            !openModal ? setOpenModal(true) : setOpenModal(false)
+        }}
+        >
+            <figure className=" relative mb-2 w-full h-5/6 rounded-t-lg  " >
+                <span className="absolute bottom-2 left-1 rounded-full px-1 bg-white/50 text-sm">{data.data.category.name}</span>
+                <img
+                    src={data.data.images[0]} alt="HeadPhones"
+                    className="w-full h-full object-cover rounded-t-lg"
                 />
-                <div className=" absolute top-2 right-1 flex justify-center items-center w-6 h-6 rounded-full backdrop-blur-sm bg-white/70">
-                    +
-                </div>
+                <button
+                    className=" absolute top-2 right-1 flex justify-center items-center w-5 h-5 hover:scale-[1.1] rounded-full bg-white/70"
+                    onClick={() => setCount(Count + 1)}
+                >
+                    <PlusSmallIcon className="h-4 w-4 text-black/80"/>
+                </button>
             </figure>
             <p className="flex justify-between px-3 py-0">
-                <span>HeadPhones</span>
-                <span>$300</span>
+                <span className="text-sm font-light">{data.data.title}</span>
+                <span className="text-sm font-medium ">${data.data.price}</span>
             </p>
         </div>
     )

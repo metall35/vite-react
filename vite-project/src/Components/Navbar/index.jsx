@@ -1,11 +1,16 @@
 import { NavLink } from "react-router-dom"
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+
+import { useContext } from "react";
+import { ShopContext } from "../../Context";
 
 function Navbar() {
+    const { Count } = useContext(ShopContext)
     const NavActive = "underline underline-offset-4"
     const NavHover = "hover:underline underline-offset-4"
     return (
         <nav className="flex justify-between items-center z-10 py-4 px-8 font-normal text-sm">
-            <ul className="flex items-center gap-3 flex-wrapg">
+            <ul className="flex items-center gap-3 flex-wrap">
                 <li>
                     <NavLink
                         to="/"
@@ -17,7 +22,7 @@ function Navbar() {
                 <li>
                     <NavLink
                         to="/"
-                        className={({ isActive }) => isActive ? NavActive : NavHover }
+                        className={({ isActive }) => isActive ? NavActive : NavHover}
                     >
                         All
                     </NavLink>
@@ -26,7 +31,7 @@ function Navbar() {
                     <NavLink
                         to="/clothes"
                         className={({ isActive }) => isActive ? NavActive : NavHover}
-                        >
+                    >
                         Clothes
                     </NavLink>
                 </li>
@@ -100,7 +105,10 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li>
-                    🛒0
+                    <div className="flex rounded-full">
+                        <ShoppingCartIcon className="h-4 w-4 text-black" /> 
+                        <p className="rounded-full text-xs ">{Count}</p>
+                    </div>
                 </li>
             </ul>
         </nav>
