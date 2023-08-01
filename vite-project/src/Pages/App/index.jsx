@@ -1,6 +1,6 @@
-import { useContext } from "react";
 import { useRoutes, BrowserRouter  } from "react-router-dom";
-import { ShopContextProvider, ShopContext } from "../../Context";
+import { useContext } from "react";
+import { ShopContext } from "../../Context";
 import Home from "../Home";
 import MyAccount from "../MyAccount";
 import MyOrder from "../MyOrder";
@@ -23,10 +23,10 @@ function AppRoutes() {
   ])
   return routes
 }
-function App() {
-  const {openModal} = useContext(ShopContext)
+function AppUi() {
+  const  {openModal}  = useContext(ShopContext)
   return (
-    <ShopContextProvider>
+    <>
       <BrowserRouter>
         <Navbar />
         <Layout>
@@ -38,8 +38,8 @@ function App() {
             <ProductDetail />
           </Modal>
         )}
-    </ShopContextProvider>
+    </>
   )
 }
 
-export default App
+export default AppUi  
