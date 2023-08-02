@@ -1,4 +1,4 @@
-import { useRoutes, BrowserRouter  } from "react-router-dom";
+import { useRoutes, BrowserRouter } from "react-router-dom";
 import { useContext } from "react";
 import { ShopContext } from "../../Context";
 import Home from "../Home";
@@ -10,7 +10,7 @@ import SignIn from "../SignIn";
 import Navbar from "../../Components/Navbar";
 import Layout from "../../Components/Layout";
 import Modal from "../../Components/Modal";
-import  ProductDetail  from "../../Components/ProductDetail";
+import ProductDetail from "../../Components/ProductDetail";
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -24,7 +24,7 @@ function AppRoutes() {
   return routes
 }
 function AppUi() {
-  const  {openModal}  = useContext(ShopContext)
+  const { openModal } = useContext(ShopContext)
   return (
     <>
       <BrowserRouter>
@@ -33,11 +33,11 @@ function AppUi() {
           <AppRoutes />
         </Layout>
       </BrowserRouter>
-        {openModal && (
-          <Modal>
-            <ProductDetail />
-          </Modal>
-        )}
+      {openModal && (
+        <Modal>
+          <ProductDetail />
+        </Modal>
+      )}
     </>
   )
 }
