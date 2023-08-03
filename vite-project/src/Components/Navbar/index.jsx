@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { ShopContext } from "../../Context";
 
 function Navbar() {
-    const { Count } = useContext(ShopContext)
+    const { count } = useContext(ShopContext)
     const NavActive = "underline underline-offset-4"
     const NavHover = "hover:underline underline-offset-4"
     return (
@@ -107,7 +107,7 @@ function Navbar() {
                 <li>
                     <div className="flex rounded-full">
                         <ShoppingCartIcon className="h-4 w-4 text-black" /> 
-                        <p className="rounded-full text-xs ">{Count}</p>
+                        <p className="rounded-full text-xs ">{count}</p>
                     </div>
                 </li>
             </ul>

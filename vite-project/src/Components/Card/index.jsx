@@ -3,14 +3,21 @@ import { PlusSmallIcon } from "@heroicons/react/24/outline";
 import { ShopContext } from "../../Context";
 function Card(data) {
     const {
-        Count,
+        count,
         setCount,
         setOpenModal,
-        setProductShow
+        setProductShow,
+        setCardProducts,
+        cardProducts
     } = useContext(ShopContext)
     const showProducts = (ProductDetail) => {
         setOpenModal(state => !state);
         setProductShow(ProductDetail)
+    }
+    const addProductsCard = (ProductData) =>{
+        setCardProducts([...cardProducts, ProductData])
+        setCount(count + 1)
+        console.log('Card ', cardProducts);
     }
     return (
         <div
@@ -28,13 +35,13 @@ function Card(data) {
                 <span className="absolute bottom-2 left-1 rounded-full px-1 bg-white/50 text-sm">{data.data.category}</span>
                 <button
                     className=" absolute top-2 right-1 flex justify-center items-center w-5 h-5 hover:scale-[1.1] rounded-full bg-white/70"
-                    onClick={() => setCount(Count + 1)}
+                    onClick={() => addProductsCard(data.data)}
                 >
                     <PlusSmallIcon className="h-4 w-4 text-black/80" />
                 </button>
             </figure>
             <p className="flex justify-between px-3 py-0">
-                <span className="text-sm font-light">{data.data.title}</span>
+                <span className="text-sm font-light text-ellipsis whitespace-nowrap overflow-hidden w-[50%]">{data.data.title}</span>
                 <span className="text-sm font-medium ">${data.data.price}</span>
             </p>
         </div>

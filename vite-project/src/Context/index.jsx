@@ -6,13 +6,15 @@ export const ShopContext = createContext()
 
 export function ShopContextProvider({ children }) {
     //count from shopping card
-    const [Count, setCount] = useState(0)
+    const [count, setCount] = useState(0)
     //carditems
-    const [Items, setItems] = useState(null)
+    const [items, setItems] = useState(null)
     //modal
     const [openModal, setOpenModal] = useState(false)
     //product datail
     const [productShow, setProductShow] = useState({})
+    //shopping card
+    const [cardProducts, setCardProducts] = useState([])
     //effect APi
     useEffect(() => {
         const fetchData = async () => {
@@ -29,13 +31,15 @@ export function ShopContextProvider({ children }) {
     return (
         <ShopContext.Provider
             value={{
-                Count,
+                count,
                 setCount,
-                Items,
+                items,
                 openModal,
                 setOpenModal,
                 productShow,
                 setProductShow,
+                cardProducts,
+                setCardProducts,
             }}
         >
             {children}
