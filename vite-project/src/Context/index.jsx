@@ -11,6 +11,7 @@ export function ShopContextProvider({ children }) {
     const [items, setItems] = useState(null)
     //modal
     const [openModal, setOpenModal] = useState(false)
+    const [openModalCard, setOpenModalCard] = useState(false)
     //product datail
     const [productShow, setProductShow] = useState({})
     //shopping card
@@ -40,6 +41,8 @@ export function ShopContextProvider({ children }) {
                 setProductShow,
                 cardProducts,
                 setCardProducts,
+                openModalCard,
+                setOpenModalCard
             }}
         >
             {children}
