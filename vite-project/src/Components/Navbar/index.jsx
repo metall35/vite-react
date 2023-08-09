@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom"
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-
 import { useContext } from "react";
 import { ShopContext } from "../../Context";
+import MyDropdown from "../CheckoutSideMenu";
 
 function Navbar() {
     const { count } = useContext(ShopContext)
@@ -105,10 +105,12 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li>
-                    <div className="flex rounded-full">
-                        <ShoppingCartIcon className="h-4 w-4 text-black" /> 
+                </li>
+                <li>
+                    <MyDropdown>
+                        <ShoppingCartIcon className="h-4 w-4 text-black" />
                         <p className="rounded-full text-xs ">{count}</p>
-                    </div>
+                    </MyDropdown>
                 </li>
             </ul>
         </nav>

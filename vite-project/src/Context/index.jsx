@@ -16,6 +16,9 @@ export function ShopContextProvider({ children }) {
     const [productShow, setProductShow] = useState({})
     //shopping card
     const [cardProducts, setCardProducts] = useState([])
+    //LOADING
+    const [Loading, setLoading] = useState(true)
+    console.log(Loading);
     //effect APi
     useEffect(() => {
         const fetchData = async () => {
@@ -23,7 +26,9 @@ export function ShopContextProvider({ children }) {
                 const response = await fetch(API)
                 const data = await response.json()
                 setItems(data)
+                setLoading(false)
             } catch (error) {
+                setLoading(false)
                 console.log(`oh no hermano, algo salio mal: ${error}`);
             }
         }
@@ -42,7 +47,9 @@ export function ShopContextProvider({ children }) {
                 cardProducts,
                 setCardProducts,
                 openModalCard,
-                setOpenModalCard
+                setOpenModalCard,
+                Loading,
+                setLoading
             }}
         >
             {children}
